@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Лучшие бомбардиры {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row mx-auto">
+		<div class="btn-group mt-5">
+			<a href="{% url 'rpl_21' %}" class="btn btn-warning text-light" style="background: black;">Таблица</a>
+			<a href="{% url 'scorers' %}" class="btn btn-warning text-dark" style="background: #f3ca20;" aria-current="page">Бомбардиры</a>
+			<a href="{% url 'assistants' %}" class="btn btn-warning text-light" style="background: black;">Ассистенты</a>
+		</div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+			<h1 class="mt-5 title">Бомбардиры Тинькофф Российской Премьер-Лиги</h1>
+			<table class="table mt-5">
+				<col style="width: 0.1%">
+				<col style="width: 2%">
+				<col style="width: 2%">
+				<col style="width: 1%">
+				<col style="width: 1%">
+				<thead>
+					<tr>
+						<th>
+							Место
+						</th>
+						<th>
+							Игрок
+						</th>
+						<th>
+							Голы	
+						</th>
+						<th>
+							С пенальти
+						</th>
+						<th>
+							Матчи
+						</th>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">1</td>
+						<td class="table-item">{{data.1.0}}</td>
+						<td class="table-item">{{data.1.1}}</td>
+						<td class="table-item">{{data.1.2}}</td>
+						<td class="table-item">{{data.1.3}}</td>			
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">2</td>
+						<td class="table-item">{{data.2.0}}</td>
+						<td class="table-item">{{data.2.1}}</td>
+						<td class="table-item">{{data.2.2}}</td>
+						<td class="table-item">{{data.2.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">3</td>
+						<td class="table-item">{{data.3.0}}</td>
+						<td class="table-item">{{data.3.1}}</td>
+						<td class="table-item">{{data.3.2}}</td>
+						<td class="table-item">{{data.3.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">4</td>
+						<td class="table-item">{{data.4.0}}</td>
+						<td class="table-item">{{data.4.1}}</td>
+						<td class="table-item">{{data.4.2}}</td>
+						<td class="table-item">{{data.4.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">5</td>
+						<td class="table-item">{{data.5.0}}</td>
+						<td class="table-item">{{data.5.1}}</td>
+						<td class="table-item">{{data.5.2}}</td>
+						<td class="table-item">{{data.5.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">6</td>
+						<td class="table-item">{{data.6.0}}</td>
+						<td class="table-item">{{data.6.1}}</td>
+						<td class="table-item">{{data.6.2}}</td>
+						<td class="table-item">{{data.6.3}}</td>
+					<tr valign="middle" align="center">
+						<td class="table-item">7</td>
+						<td class="table-item">{{data.7.0}}</td>
+						<td class="table-item">{{data.7.1}}</td>
+						<td class="table-item">{{data.7.2}}</td>
+						<td class="table-item">{{data.7.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">8</td>
+						<td class="table-item">{{data.8.0}}</td>
+						<td class="table-item">{{data.8.1}}</td>
+						<td class="table-item">{{data.8.2}}</td>
+						<td class="table-item">{{data.8.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">9</td>
+						<td class="table-item">{{data.9.0}}</td>
+						<td class="table-item">{{data.9.1}}</td>
+						<td class="table-item">{{data.9.2}}</td>
+						<td class="table-item">{{data.9.3}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">10</td>
+						<td class="table-item">{{data.10.0}}</td>
+						<td class="table-item">{{data.10.1}}</td>
+						<td class="table-item">{{data.10.2}}</td>
+						<td class="table-item">{{data.10.3}}</td>
+					</tr>
+				</thead>
+			</table>
+			<div>
+				<h1>Здесь представлены только 10 лучших бомбардиров сезона. Полная статистика доступна на<a href="https://premierliga.ru/players/scorers/" style="text-decoration: none;"> официальном сайте</a></h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

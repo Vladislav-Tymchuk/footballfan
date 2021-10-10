@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+
+<div style="background: floralwhite;">
+	<div class="container">
+		<div class="row mx-auto">
+			<div class="col-3 col-sm-12 col-md-6 col-lg-6 text-center position-sticky">
+				<table class="table mt-5">
+					<thead>
+						<tr>
+							<th>
+								Место
+							</th>
+							<th>
+								Команда
+							</th>
+							<th>
+								М	
+							</th>
+							<th>
+								О
+							</th>
+						</tr>
+						<tr>
+							<td style="background: green;" class="table-item">1</td>
+							<td class="table-item">{{ data.1.0 }}</td>
+							<td class="table-item">{{data.1.1}}</td>
+							<td class="table-item">{{data.1.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: green;" class="table-item">2</td>
+							<td class="table-item">{{data.2.0}}</td>
+							<td class="table-item">{{data.2.1}}</td>
+							<td class="table-item">{{data.2.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: yellow;" class="table-item">3</td>
+							<td class="table-item">{{data.3.0}}</td>
+							<td class="table-item">{{data.3.1}}</td>
+							<td class="table-item">{{data.3.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: yellow;" class="table-item">4</td>
+							<td class="table-item">{{data.4.0}}</td>
+							<td class="table-item">{{data.4.1}}</td>
+							<td class="table-item">{{data.4.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">5</td>
+							<td class="table-item">{{data.5.0}}</td>
+							<td class="table-item">{{data.5.1}}</td>
+							<td class="table-item">{{data.5.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">6</td>
+							<td class="table-item">{{data.6.0}}</td>
+							<td class="table-item">{{data.6.1}}</td>
+							<td class="table-item">{{data.6.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">7</td>
+							<td class="table-item">{{data.7.0}}</td>
+							<td class="table-item">{{data.7.1}}</td>
+							<td class="table-item">{{data.7.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">8</td>
+							<td class="table-item">{{data.8.0}}</td>
+							<td class="table-item">{{data.8.1}}</td>
+							<td class="table-item">{{data.8.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">9</td>
+							<td class="table-item">{{data.9.0}}</td>
+							<td class="table-item">{{data.9.1}}</td>
+							<td class="table-item">{{data.9.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">10</td>
+							<td class="table-item">{{data.10.0}}</td>
+							<td class="table-item">{{data.10.1}}</td>
+							<td class="table-item">{{data.10.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">11</td>
+							<td class="table-item">{{data.11.0}}</td>
+							<td class="table-item">{{data.11.1}}</td>
+							<td class="table-item">{{data.11.6}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">12</td>
+							<td class="table-item">{{data.12.0}}</td>
+							<td class="table-item">{{data.12.1}}</td>
+							<td class="table-item">{{data.12.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: pink" class="table-item">13</td>
+							<td class="table-item">{{data.13.0}}</td>
+							<td class="table-item">{{data.13.1}}</td>
+							<td class="table-item">{{data.13.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: pink;" class="table-item">14</td>
+							<td class="table-item">{{data.14.0}}</td>
+							<td class="table-item">{{data.14.1}}</td>
+							<td class="table-item">{{data.14.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: red;" class="table-item">15</td>
+							<td class="table-item">{{data.15.0}}</td>
+							<td class="table-item">{{data.15.1}}</td>
+							<td class="table-item">{{data.15.6}}</td>
+						</tr>
+						<tr>
+							<td style="background: red;" class="table-item">16</td>
+							<td class="table-item">{{data.16.0}}</td>
+							<td class="table-item">{{data.16.1}}</td>
+							<td class="table-item">{{data.16.6}}</td>
+						</tr>
+					</thead>
+				</table>
+				<div class="d-grid gap-2">
+					<a href="{% url 'rpl_21' %}" class="btn btn-outline-dark">Полная таблица</a>
+				</div>
+				<table class="table mt-5">
+					<col style="width: 0.1%">
+					<col style="width: 10%">
+					<col style="width: 5%">
+					<col style="width: 5%">
+					<thead>
+						<tr>
+							<th colspan="2">
+								Игрок
+							</th>
+							<th>
+								Голы
+							</th>
+							<th>
+								С пенальти
+							</th>
+						</tr>
+						<tr>
+							<td class="table-item">1</td>
+							<td class="table-item">{{data.1.7}}</td>
+							<td class="table-item">{{data.1.8}}</td>
+							<td class="table-item">{{data.1.9}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">2</td>
+							<td class="table-item">{{data.2.7}}</td>
+							<td class="table-item">{{data.2.8}}</td>
+							<td class="table-item">{{data.2.9}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">3</td>
+							<td class="table-item">{{data.3.7}}</td>
+							<td class="table-item">{{data.3.8}}</td>
+							<td class="table-item">{{data.3.9}}</td>
+						</tr>
+					</thead>
+				</table>
+				<div class="d-grid gap-2">
+					<a href="{% url 'scorers' %}" class="btn btn-outline-dark">Все бомбардиры</a>
+				</div>
+				<table class="table mt-5">
+					<col style="width: 0.1%">
+					<col style="width: 20%">
+					<col style="width: 5%">
+					<col style="width: 5%">
+					<thead>
+						<tr>
+							<th colspan="2">
+								Игрок
+							</th>
+							<th>
+								Передачи
+							</th>
+							<th>
+								Минуты
+							</th>
+						</tr>
+						<tr>
+							<td class="table-item">1</td>
+							<td class="table-item">{{data.1.10}}</td>
+							<td class="table-item">{{data.1.11}}</td>
+							<td class="table-item">{{data.1.12}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">2</td>
+							<td class="table-item">{{data.2.10}}</td>
+							<td class="table-item">{{data.2.11}}</td>
+							<td class="table-item">{{data.2.12}}</td>
+						</tr>
+						<tr>
+							<td class="table-item">3</td>
+							<td class="table-item">{{data.3.10}}</td>
+							<td class="table-item">{{data.3.11}}</td>
+							<td class="table-item">{{data.3.12}}</td>
+						</tr>
+					</thead>
+				</table>
+				<div class="d-grid gap-2">
+					<a href="{% url 'assistants' %}" class="btn btn-outline-dark">Все ассистенты</a>
+				</div>		
+			</div>
+			<div class="col-7 col-md-6 col-lg-6 col-sm-12 mt-5">
+				<div class="bg-light mb-3" style="max-width: 540px;">
+				{% for post in data.posts.all %}
+					<div class="row g-0 mb-5">
+					    <div class="col-md-4">
+					      	<a href="{% url 'post' post.post_slug %}"><img src="{{post.post_image.url}}" class="img-fluid rounded-start" alt=""></a>
+					    </div>
+					    <div class="col-md-8">
+						    <div class="card-body">
+						        <strong class="d-inline-block mb-2">{{post.post_club}}</strong>
+						        <a href="{% url 'post' post.post_slug %}" style="text-decoration: none;" class="title"><p class="card-text title">{{post.post_title}}</p></a>
+						        <p class="card-text mt-2"><small class="text-muted">{{post.post_published}}</small></p>
+						        <p># {{post.post_creator}}</p>
+						    </div>
+					    </div>
+					</div>
+					<hr>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

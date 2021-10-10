@@ -1,0 +1,36 @@
+<nav class="container-fluid navbar navbar-expand-md navbar-dark bg-dark"> 
+ 
+    <a href="{% url 'home' %}" class="navbar-brand"><i class="mx-auto d-block material-icons md-24">sports_soccer</i></a> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbutton" aria-controls="navbutton" aria-expanded="false" aria-label="Toggle navigation">  
+      <span class="navbar-toggler-icon"></span> 
+    </button> 
+      
+    <div id="navbutton" class="collapse navbar-collapse"> 
+     
+        <ul class="navbar-nav"> 
+            <li>
+                <div class="dropdown">
+                  <a class="btn btn-dark text-light text-uppercase fw-bold dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Мой клуб
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <table class="table">
+                        {% for club in clubs %}
+                            <td><a class="dropdown-item" href="{{club.get_url}}"><img width="50" height="50" src="{{club.club_photo.url}}"></a></td>
+                        {% endfor %}
+                    </table>
+                  </ul>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+            {% if request.user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'account' %}"><i class="cart-icon material-icons">account_circle</i></a></li>
+            {% else %}
+                <li class="nav-item"> <a class="nav-link text-light text-uppercase fw-bold" href="{% url 'login' %}">Войти<i class="cart-icon material-icons">account_circle</i></a></li>
+            {% endif %}
+            
+        </ul>     
+    </div> 
+</nav>

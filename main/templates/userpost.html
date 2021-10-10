@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Запись {% endblock %}
+
+{% block content %}
+
+<div>
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="text" name="title" required_id="id_userpost_title">
+		<input type="text" name="content" required_id="id_userpost_content">
+		<input type="file" name="userpost_image" accept="image/*" required id="id_userpost_image">
+		<input type="submit" name="post" value="Опубликовать запись">
+	</form>
+</div>
+
+{% endblock %}

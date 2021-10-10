@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Тинькофф РПЛ 21/22 {% endblock %}
+{% block content %}
+
+
+<div class="container">
+	<div class="row mx-auto">
+		<div class="btn-group mt-5">
+			<a href="" class="btn btn-warning text-dark" style="background: #f3ca20;" aria-current="page">Таблица</a>
+			<a href="{% url 'scorers' %}" class="btn btn-warning text-light" style="background: black;">Бомбардиры</a>
+			<a href="{% url 'assistants' %}" class="btn btn-warning text-light" style="background: black;">Ассистенты</a>
+		</div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+			<h1 class="mt-5 title">Турнирная таблица Тинькофф Российской Премьер-Лиги</h1>
+			<table class="table mt-5">
+				<col style="width: 0.1%">
+				<col style="width: 15%">
+				<col style="width: 5%">
+				<col style="width: 5%">
+				<col style="width: 5%">
+				<col style="width: 5%">
+				<col style="width: 5%">
+				<col style="width: 5%">
+				<thead>
+					<tr>
+						<th>
+							Место
+						</th>
+						<th>
+							Команда
+						</th>
+						<th>
+							М	
+						</th>
+						<th>
+							В
+						</th>
+						<th>
+							Н
+						</th>
+						<th>
+							П
+						</th>
+						<th>
+							З - П
+						</th>
+						<th>
+							О
+						</th>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: green;" class="table-item">1</td>
+						<td class="table-item">{{ data.1.0 }}</td>
+						<td class="table-item">{{data.1.1}}</td>
+						<td class="table-item">{{data.1.2}}</td>
+						<td class="table-item">{{data.1.3}}</td>
+						<td class="table-item">{{data.1.4}}</td>
+						<td class="table-item">{{data.1.5}}</td>
+						<td class="table-item">{{data.1.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: green;" class="table-item">2</td>
+						<td class="table-item">{{data.2.0}}</td>
+						<td class="table-item">{{data.2.1}}</td>
+						<td class="table-item">{{data.2.2}}</td>
+						<td class="table-item">{{data.2.3}}</td>
+						<td class="table-item">{{data.2.4}}</td>
+						<td class="table-item">{{data.2.5}}</td>
+						<td class="table-item">{{data.2.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: yellow;" class="table-item">3</td>
+						<td class="table-item">{{data.3.0}}</td>
+						<td class="table-item">{{data.3.1}}</td>
+						<td class="table-item">{{data.3.2}}</td>
+						<td class="table-item">{{data.3.3}}</td>
+						<td class="table-item">{{data.3.4}}</td>
+						<td class="table-item">{{data.3.5}}</td>
+						<td class="table-item">{{data.3.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: yellow;" class="table-item">4</td>
+						<td class="table-item">{{data.4.0}}</td>
+						<td class="table-item">{{data.4.1}}</td>
+						<td class="table-item">{{data.4.2}}</td>
+						<td class="table-item">{{data.4.3}}</td>
+						<td class="table-item">{{data.4.4}}</td>
+						<td class="table-item">{{data.4.5}}</td>
+						<td class="table-item">{{data.4.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">5</td>
+						<td class="table-item">{{data.5.0}}</td>
+						<td class="table-item">{{data.5.1}}</td>
+						<td class="table-item">{{data.5.2}}</td>
+						<td class="table-item">{{data.5.3}}</td>
+						<td class="table-item">{{data.5.4}}</td>
+						<td class="table-item">{{data.5.5}}</td>
+						<td class="table-item">{{data.5.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">6</td>
+						<td class="table-item">{{data.6.0}}</td>
+						<td class="table-item">{{data.6.1}}</td>
+						<td class="table-item">{{data.6.2}}</td>
+						<td class="table-item">{{data.6.3}}</td>
+						<td class="table-item">{{data.6.4}}</td>
+						<td class="table-item">{{data.6.5}}</td>
+						<td class="table-item">{{data.6.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">7</td>
+						<td class="table-item">{{data.7.0}}</td>
+						<td class="table-item">{{data.7.1}}</td>
+						<td class="table-item">{{data.7.2}}</td>
+						<td class="table-item">{{data.7.3}}</td>
+						<td class="table-item">{{data.7.4}}</td>
+						<td class="table-item">{{data.7.5}}</td>
+						<td class="table-item">{{data.7.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">8</td>
+						<td class="table-item">{{data.8.0}}</td>
+						<td class="table-item">{{data.8.1}}</td>
+						<td class="table-item">{{data.8.2}}</td>
+						<td class="table-item">{{data.8.3}}</td>
+						<td class="table-item">{{data.8.4}}</td>
+						<td class="table-item">{{data.8.5}}</td>
+						<td class="table-item">{{data.8.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">9</td>
+						<td class="table-item">{{data.9.0}}</td>
+						<td class="table-item">{{data.9.1}}</td>
+						<td class="table-item">{{data.9.2}}</td>
+						<td class="table-item">{{data.9.3}}</td>
+						<td class="table-item">{{data.9.4}}</td>
+						<td class="table-item">{{data.9.5}}</td>
+						<td class="table-item">{{data.9.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">10</td>
+						<td class="table-item">{{data.10.0}}</td>
+						<td class="table-item">{{data.10.1}}</td>
+						<td class="table-item">{{data.10.2}}</td>
+						<td class="table-item">{{data.10.3}}</td>
+						<td class="table-item">{{data.10.4}}</td>
+						<td class="table-item">{{data.10.5}}</td>
+						<td class="table-item">{{data.10.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">11</td>
+						<td class="table-item">{{data.11.0}}</td>
+						<td class="table-item">{{data.11.1}}</td>
+						<td class="table-item">{{data.11.2}}</td>
+						<td class="table-item">{{data.11.3}}</td>
+						<td class="table-item">{{data.11.4}}</td>
+						<td class="table-item">{{data.11.5}}</td>
+						<td class="table-item">{{data.11.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table-item">12</td>
+						<td class="table-item">{{data.12.0}}</td>
+						<td class="table-item">{{data.12.1}}</td>
+						<td class="table-item">{{data.12.2}}</td>
+						<td class="table-item">{{data.12.3}}</td>
+						<td class="table-item">{{data.12.4}}</td>
+						<td class="table-item">{{data.12.5}}</td>
+						<td class="table-item">{{data.12.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: pink" class="table-item">13</td>
+						<td class="table-item">{{data.13.0}}</td>
+						<td class="table-item">{{data.13.1}}</td>
+						<td class="table-item">{{data.13.2}}</td>
+						<td class="table-item">{{data.13.3}}</td>
+						<td class="table-item">{{data.13.4}}</td>
+						<td class="table-item">{{data.13.5}}</td>
+						<td class="table-item">{{data.13.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: pink" class="table-item">14</td>
+						<td class="table-item">{{data.14.0}}</td>
+						<td class="table-item">{{data.14.1}}</td>
+						<td class="table-item">{{data.14.2}}</td>
+						<td class="table-item">{{data.14.3}}</td>
+						<td class="table-item">{{data.14.4}}</td>
+						<td class="table-item">{{data.14.5}}</td>
+						<td class="table-item">{{data.14.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: red;" class="table-item">15</td>
+						<td class="table-item">{{data.15.0}}</td>
+						<td class="table-item">{{data.15.1}}</td>
+						<td class="table-item">{{data.15.2}}</td>
+						<td class="table-item">{{data.15.3}}</td>
+						<td class="table-item">{{data.15.4}}</td>
+						<td class="table-item">{{data.15.5}}</td>
+						<td class="table-item">{{data.15.6}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td style="background: red;" class="table-item">16</td>
+						<td class="table-item">{{data.16.0}}</td>
+						<td class="table-item">{{data.16.1}}</td>
+						<td class="table-item">{{data.16.2}}</td>
+						<td class="table-item">{{data.16.3}}</td>
+						<td class="table-item">{{data.16.4}}</td>
+						<td class="table-item">{{data.16.5}}</td>
+						<td class="table-item">{{data.16.6}}</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

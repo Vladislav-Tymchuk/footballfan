@@ -1,0 +1,31 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+ 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+	<title>Вход в аккаунт</title>
+</head>
+<body class="login-body">
+	<form class="box" method="post">
+		{% csrf_token %}
+		<h1>Вход в аккаунт</h1>
+		<input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Ваш никнейм">
+		<input type="password" name="password" autocomplete="current-password" required id="id_password" placeholder="Ваш пароль">
+		{% if form.errors %}
+			{{form.errors.message}}
+		    <ul class="errorlist">
+		    	<li>Имя пользователя или пароль неверны</li>
+		    </ul>
+		{% endif %}
+		<input type="submit" name="login" value="Войти">
+		<a href="{% url 'registration' %}">Еще нет аккаунта?</a>
+	</form>	
+</body>
+</html>
