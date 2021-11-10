@@ -9,26 +9,19 @@
      
         <ul class="navbar-nav"> 
             <li>
-                <div class="dropdown">
-                  <a class="btn btn-dark text-light text-uppercase fw-bold dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="nav-item">
+                  <a class="my__club" href="{% url 'club' %}">
                     Мой клуб
                   </a>
-
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <table class="table">
-                        {% for club in clubs %}
-                            <td><a class="dropdown-item" href="{{club.get_url}}"><img width="50" height="50" src="{{club.club_photo.url}}"></a></td>
-                        {% endfor %}
-                    </table>
-                  </ul>
                 </div>
             </li>
         </ul>
         <ul class="navbar-nav ms-auto">
             {% if request.user.is_authenticated %}
-                <li class="nav-item"><a href="{% url 'account' %}"><i class="cart-icon material-icons">account_circle</i></a></li>
+                <li class="my__username__nav">{{request.user.username}}</li>
+                <li class="nav-item"><a href="{% url 'logout' %}"><i class="cart-icon material-icons">logout</i></a></li>
             {% else %}
-                <li class="nav-item"> <a class="nav-link text-light text-uppercase fw-bold" href="{% url 'login' %}">Войти<i class="cart-icon material-icons">account_circle</i></a></li>
+                <li class="nav-item"><a class="btn__login" href="{% url 'login' %}">Войти<i class="cart-icon material-icons">account_circle</i></a></li>
             {% endif %}
             
         </ul>     

@@ -1,8 +1,89 @@
-.table-item {
+body {
+	background-color: floralwhite;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.main__button {
+	background-color: floralwhite;
+	border: black 1px solid;
+	color: black;
+	font-size: 8;
+	font-style: normal;
+}
+.main__button:hover {
+	background-color: #EE9A49;
+	color: floralwhite;
+	border: none;
+	font-size: 12;
+	font-style: bold;
+}
+
+.table__item {
 	text-transform: inherit; 
 	font-family: 'Spectral', serif; 
 	font-size: 1.2rem;
 	font-weight: bold;
+}
+
+.hr__line {
+	background-color: #EE9A49;
+}
+
+.comment__space {
+	background-color: floralwhite; 
+	border: #EE9A49 1px solid;
+}
+
+.comment__textarea {
+	background-color: floralwhite; 
+	width: 350px;
+}
+
+.my__club {
+	color: floralwhite;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.my__club:hover {
+	color: #EE9A49;
+}
+
+.choosed__club {
+	color: #EE9A49;
+	font-weight: bold;
+}
+
+.my__username__nav {
+	color: floralwhite; 
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.my__username__nav:hover {
+	color: #EE9A49;
+}
+
+.my__username {
+	color: #EE9A49;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+.btn__login {
+	color: floralwhite;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.btn__login:hover {
+	color: #EE9A49;
 }
 
 .title {
@@ -20,7 +101,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: #34495e;
+	background: #EE9A49;
 }
 
 .box {
@@ -41,7 +122,7 @@
 	display: block;
 	margin: 20px auto;
 	text-align: center;
-	border: 2px solid #3498db;
+	border: 2px solid #16B8F3;
 	padding: 14px 10px;
 	width: 200px;
 	outline: none;
@@ -51,13 +132,13 @@
 }
 
 .box h1 {
-	color: white;
+	color: #00FF80;
 	text-transform: uppercase;
 }
 
 .box input[type = 'text']:focus, .box input[type = 'password']:focus {
 	width: 250px;
-	border-color: #2ecc71;
+	border-color: #00FF80;
 }
 
 .box input[type = 'submit'] {
@@ -66,7 +147,7 @@
 	display: block;
 	margin: 20px auto;
 	text-align: center;
-	border: 2px solid #2ecc71;
+	border: 2px solid #00FF80;
 	padding: 14px 40px;
 	outline: none;
 	color: white;
@@ -76,5 +157,5 @@
 }
 
 .box input[type = 'submit']:hover {
-	background: #2ecc71;
+	background: #00FF80;
 }

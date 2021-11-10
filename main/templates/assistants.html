@@ -8,9 +8,9 @@
 <div class="container">
 	<div class="row mx-auto">
 		<div class="btn-group mt-5">
-			<a href="{% url 'rpl_21' %}" class="btn btn-warning text-light" style="background: black;">Таблица</a>
-			<a href="{% url 'scorers' %}" class="btn btn-warning text-light" style="background: black;">Бомбардиры</a>
-			<a href="{% url 'assistants' %}" class="btn btn-warning text-dark" style="background: #f3ca20;" aria-current="page">Ассистенты</a>
+			<a href="{% url 'rpl_21' %}" class="btn main__button" id="table">Таблица</a>
+			<a href="{% url 'scorers' %}" class="btn main__button" id="scorers">Бомбардиры</a>
+			<a href="{% url 'assistants' %}" class="btn main__button" id="assists">Ассистенты</a>
 		</div>
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
 			<h1 class="mt-5 title">Ассистенты Тинькофф Российской Премьер-Лиги</h1>
@@ -35,69 +35,70 @@
 						</th>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">1</td>
-						<td class="table-item">{{data.1.0}}</td>
-						<td class="table-item">{{data.1.1}}</td>
-						<td class="table-item">{{data.1.2}}</td>			
+						<td class="table__item">1</td>
+						<td class="table__item">{{data.1.0}}</td>
+						<td class="table__item">{{data.1.1}}</td>
+						<td class="table__item">{{data.1.2}}</td>			
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">2</td>
-						<td class="table-item">{{data.2.0}}</td>
-						<td class="table-item">{{data.2.1}}</td>
-						<td class="table-item">{{data.2.2}}</td>
+						<td class="table__item">2</td>
+						<td class="table__item">{{data.2.0}}</td>
+						<td class="table__item">{{data.2.1}}</td>
+						<td class="table__item">{{data.2.2}}</td>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">3</td>
-						<td class="table-item">{{data.3.0}}</td>
-						<td class="table-item">{{data.3.1}}</td>
-						<td class="table-item">{{data.3.2}}</td>
+						<td class="table__item">3</td>
+						<td class="table__item">{{data.3.0}}</td>
+						<td class="tabl__item">{{data.3.1}}</td>
+						<td class="table__item">{{data.3.2}}</td>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">4</td>
-						<td class="table-item">{{data.4.0}}</td>
-						<td class="table-item">{{data.4.1}}</td>
-						<td class="table-item">{{data.4.2}}</td>
+						<td class="table__item">4</td>
+						<td class="table__item">{{data.4.0}}</td>
+						<td class="table__item">{{data.4.1}}</td>
+						<td class="table__item">{{data.4.2}}</td>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">5</td>
-						<td class="table-item">{{data.5.0}}</td>
-						<td class="table-item">{{data.5.1}}</td>
-						<td class="table-item">{{data.5.2}}</td>
+						<td class="table__item">5</td>
+						<td class="table__item">{{data.5.0}}</td>
+						<td class="table__item">{{data.5.1}}</td>
+						<td class="table__item">{{data.5.2}}</td>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">6</td>
-						<td class="table-item">{{data.6.0}}</td>
-						<td class="table-item">{{data.6.1}}</td>
-						<td class="table-item">{{data.6.2}}</td>
+						<td class="table__item">6</td>
+						<td class="table__item">{{data.6.0}}</td>
+						<td class="table__item">{{data.6.1}}</td>
+						<td class="table__item">{{data.6.2}}</td>
 					<tr valign="middle" align="center">
-						<td class="table-item">7</td>
-						<td class="table-item">{{data.7.0}}</td>
-						<td class="table-item">{{data.7.1}}</td>
-						<td class="table-item">{{data.7.2}}</td>
+						<td class="table__item">7</td>
+						<td class="table__item">{{data.7.0}}</td>
+						<td class="table__item">{{data.7.1}}</td>
+						<td class="table__item">{{data.7.2}}</td>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">8</td>
-						<td class="table-item">{{data.8.0}}</td>
-						<td class="table-item">{{data.8.1}}</td>
-						<td class="table-item">{{data.8.2}}</td>
-					</tr>
-					<tr>
-						<td class="table-item">9</td>
-						<td class="table-item">{{data.9.0}}</td>
-						<td class="table-item">{{data.9.1}}</td>
-						<td class="table-item">{{data.9.2}}</td>
+						<td class="table__item">8</td>
+						<td class="table__item">{{data.8.0}}</td>
+						<td class="table__item">{{data.8.1}}</td>
+						<td class="table__item">{{data.8.2}}</td>
 					</tr>
 					<tr valign="middle" align="center">
-						<td class="table-item">10</td>
-						<td class="table-item">{{data.10.0}}</td>
-						<td class="table-item">{{data.10.1}}</td>
-						<td class="table-item">{{data.10.2}}</td>
+						<td class="table__item">9</td>
+						<td class="table__item">{{data.9.0}}</td>
+						<td class="table__item">{{data.9.1}}</td>
+						<td class="table__item">{{data.9.2}}</td>
+					</tr>
+					<tr valign="middle" align="center">
+						<td class="table__item">10</td>
+						<td class="table__item">{{data.10.0}}</td>
+						<td class="table__item">{{data.10.1}}</td>
+						<td class="table__item">{{data.10.2}}</td>
 					</tr>
 				</thead>
 			</table>
-			<div>
-				<h1>Здесь представлены только 10 лучших ассистентов сезона. Полная статистика доступна на<a href="https://premierliga.ru/stats/assist/" style="text-decoration: none;"> официальном сайте</a></h1>
-			</div>
+		</div>
+		<div class="mt-3 mb-3">
+			<h3>Здесь представлены только 10 лучших ассистентов сезона.</h3>
+			<h3>Полная статистика доступна на<a href="https://premierliga.ru/stats/assist/"> официальном сайте</a></h3>
 		</div>
 	</div>
 </div>

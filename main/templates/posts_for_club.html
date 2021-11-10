@@ -1,32 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Главная {% endblock %}
+{% block title %} {{clubPage}} {% endblock %}
 
 {% block content %}
 
+
 <div class="container">
-	<div class="row">
-		<div class="col-9 col-md-9 col-lg-9 col-sm-12 mt-5 ms-5">
-			<div class="bg-light mb-3" style="max-width: 540px;">
-			{% for post in posts.all %}
-				<div class="row g-0 mb-5">
-				    <div class="col-md-4">
-				      	<a href="{% url 'post' post.post_slug %}"><img src="{{post.post_image.url}}" class="img-fluid rounded-start" alt=""></a>
-				    </div>
-				    <div class="col-md-8">
-					    <div class="card-body">
-					        <strong class="d-inline-block mb-2 text-primary club">{{post.post_club}}</strong>
-					        <a href="{% url 'post' post.post_slug %}" style="text-decoration: none;" class="title"><p class="card-text title">{{post.post_title}}</p></a>
-					        <p class="card-text"><small class="text-muted">{{post.post_published}}</small></p>
-					        <p># {{post.post_creator}}</p>
-					    </div>
-				    </div>
+	{% if request.user.is_authenticated %}
+		<p> <span class="my__username">{{request.user.username}},</span> Вы поддерживаете <span class="choosed__club">{{clubPage.club_name}}</span></p>
+	{% else %}
+		<p>Вы поддерживаете {{club_page.club_name}}</p>
+	{% endif %}
+	<div class="row mt-3">
+		{% for post in posts.all %} 
+			<div class="col-md-6">
+				<div class="bg-light mb-3" style="max-width: 540px;">
+					<div class="row g-0 mb-5">
+						<div class="col-md-4">
+							  <a href="{% url 'post' post.post_slug %}"><img src="{{post.post_image.url}}" class="img-fluid rounded-start" alt=""></a>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<strong class="d-inline-block mb-2 text-primary club">{{post.post_club}}</strong>
+								<a href="{% url 'post' post.post_slug %}" style="text-decoration: none;" class="title"><p class="card-text title">{{post.post_title}}</p></a>
+								<p class="card-text"><small class="text-muted">{{post.post_published}}</small></p>
+								<p># {{post.post_creator}}</p>
+							</div>
+						</div>
+					</div>
 				</div>
-				<hr>
-			{% endfor %}
 			</div>
-		</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

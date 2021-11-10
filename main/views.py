@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from .models import Club, Post, Comment, UserPost
+from .models import Club, Post, Comment
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
 from django.contrib.auth.models import Group, User
-from .forms import RegistrationForm, CommentForm, UserPostForm
+from .forms import RegistrationForm, CommentForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -24,27 +24,22 @@ def home(request):
 	clubs = club.find_all('td', class_='club')
 
 	# нахожу сыгранные матчи
-
 	match = BeautifulSoup(r.text, 'lxml')
 	matches = match.find_all('td', class_='dark-blue num')
 
 	# нахожу кол-во побед
-
 	victory = BeautifulSoup(r.text, 'lxml')
 	victories = match.find_all('td', class_='dark-blue num')
 
 	# нахожу кол-во ничьих
-
 	draw = BeautifulSoup(r.text, 'lxml')
 	draws = match.find_all('td', class_='dark-blue num')
 
 	# нахожу кол-во поражений
-
 	defeat = BeautifulSoup(r.text, 'lxml')
 	defeats = match.find_all('td', class_='dark-blue num')
 
 	# нахожу з-п
-
 	goal = BeautifulSoup(r.text, 'lxml')
 	goals = goal.find_all('td', class_='dark-blue goals')
 
@@ -53,47 +48,46 @@ def home(request):
 	pts = pt.find_all('p', class_='points')
 
 	# фильтр команд
-	clubs_list = []
+	clubsList = []
 	for club in clubs:
-	    clubs_list.append(club.text[1:][:-1])
-	clubs_list = clubs_list[1:]
+	    clubsList.append(club.text[1:][:-1])
+	clubsList = clubsList[1:]
 
 	# фильтр количества матчей
-	dirty_list = []
+	dirtyList = []
 	for match in matches:
-	    dirty_list.append(match.text[1:][:-1])
-	matches_list = dirty_list[::5]
+	    dirtyList.append(match.text[1:][:-1])
+	matchesList = dirtyList[::5]
 
 	# фильтр побед
-	dirty_list = []
+	dirtyList = []
 	for victory in victories:
-	    dirty_list.append(victory.text[1:][:-1])
-	victories_list = dirty_list[1::5]
+	    dirtyList.append(victory.text[1:][:-1])
+	victoriesList = dirtyList[1::5]
 
 	# фильтр ничьих
-	dirty_list = []
+	dirtyList = []
 	for draw in draws:
-	    dirty_list.append(draw.text[1:][:-1])
-	draws_list = dirty_list[2::5]
+	    dirtyList.append(draw.text[1:][:-1])
+	drawsList = dirtyList[2::5]
 
 	# фильтр поражений
-	dirty_list = []
+	dirtyList = []
 	for defeat in defeats:
-	    dirty_list.append(defeat.text[1:][:-1])
-	defeats_list = dirty_list[3::5]
+	    dirtyList.append(defeat.text[1:][:-1])
+	defeatsList = dirtyList[3::5]
 
 	# фильтр голов
-	goals_list = []
+	goalsList = []
 	for goal in goals:
-	    goals_list.append(goal.text[2:-2])
+	    goalsList.append(goal.text[2:-2])
 
 	# фильтр очков
-	pts_list = []
+	ptsList = []
 	for pt in pts:
-	    pts_list.append(pt.text)
+	    ptsList.append(pt.text)
 
 	# парсинг бомбардиров
-
 	url = 'https://premierliga.ru/players/scorers'
 	r = requests.get(url)
 
@@ -101,32 +95,31 @@ def home(request):
 	scorer = BeautifulSoup(r.text, 'lxml')
 	scorers = scorer.find_all('tr', class_='player')
 
-	scorers_list = []
+	scorersList = []
 	for scorer in scorers:
-	    scorers_list.append(scorer.text[7:-35])
-	scorers_list = scorers_list[:16]
+	    scorersList.append(scorer.text[7:-35])
+	scorersList = scorersList[:16]
 
 	# кол-во голов и фильтрую
-	scorer_goal = BeautifulSoup(r.text, 'lxml')
-	scorer_goals = scorer_goal.find_all('b')
+	scorerGoal = BeautifulSoup(r.text, 'lxml')
+	scorerGoals = scorerGoal.find_all('b')
 
-	scorer_goals_list = []
-	for i in scorer_goals:
-	    scorer_goals_list.append(i.text)
-	scorer_goals_list = scorer_goals_list[-20:-4]
+	scorerGoalsList = []
+	for i in scorerGoals:
+	    scorerGoalsList.append(i.text)
+	scorerGoalsList = scorerGoalsList[-20:-4]
 
 	# кол-во голов с пенальти и фильтрую
-	scorer_goal_pen = BeautifulSoup(r.text, 'lxml')
-	scorer_goals_pen = scorer_goal_pen.find_all('p')
+	scorerGoalPen = BeautifulSoup(r.text, 'lxml')
+	scorerGoalsPen = scorerGoalPen.find_all('p')
 
-	scorer_goals_pen_list = []
-	for i in scorer_goals_pen:
-	    scorer_goals_pen_list.append(i.text)
-	dirty = scorer_goals_pen_list[21::9]
-	scorer_goals_pen_list = dirty[:16]
+	scorerGoalsPenList = []
+	for i in scorerGoalsPen:
+	    scorerGoalsPenList.append(i.text)
+	dirty = scorerGoalsPenList[21::9]
+	scorerGoalsPenList = dirty[:16]
 
 	# парсинг ассистентов
-
 	url = 'https://premierliga.ru/stats/assist/'
 
 	r = requests.get(url)
@@ -135,37 +128,36 @@ def home(request):
 	assistant = BeautifulSoup(r.text, 'lxml')
 	assistants = assistant.find_all('p', class_='name')
 
-	assistants_list = []
+	assistantsList = []
 	for assistant in assistants:
-	    assistants_list.append(assistant.text)
-	assistants_list = assistants_list[:16]
+	    assistantsList.append(assistant.text)
+	assistantsList = assistantsList[:16]
 
 	# нахожу количество ассистов и фильтрую
-	assistant_pass = BeautifulSoup(r.text, 'lxml')
-	assistants_passes = assistant_pass.find_all('p', class_='score')
+	assistantPass = BeautifulSoup(r.text, 'lxml')
+	assistantsPasses = assistantPass.find_all('p', class_='score')
 
-	assistants_passes_list = []
-	for assistant_pass in assistants_passes:
-	    assistants_passes_list.append(assistant_pass.text)
-	assistants_passes_list = assistants_passes_list[:16]
+	assistantsPassesList = []
+	for assistantPass in assistantsPasses:
+	    assistantsPassesList.append(assistantPass.text)
+	assistantsPassesList = assistantsPassesList[:16]
 
 	# нахожу сыгранное время и фильтрую
-	assistant_minute = BeautifulSoup(r.text, 'lxml')
-	assistants_minutes = assistant_minute.find_all('p', class_='time')
+	assistantMinute = BeautifulSoup(r.text, 'lxml')
+	assistantsMinutes = assistantMinute.find_all('p', class_='time')
 
-	assistants_minutes_list = []
-	for assistant_minute in assistants_minutes:
-	    assistants_minutes_list.append(assistant_minute.text)
-	assistants_minutes_list = assistants_minutes_list[:16]
+	assistantsMinutesList = []
+	for assistantMinute in assistantsMinutes:
+	    assistantsMinutesList.append(assistantMinute.text)
+	assistantsMinutesList = assistantsMinutesList[:16]
 
+	keysList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']
 
-	keys_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']
+	valuesList = np.reshape(np.dstack((clubsList, matchesList, victoriesList, drawsList, defeatsList, goalsList,
+	                                    ptsList, scorersList, scorerGoalsList, scorerGoalsPenList,
+	                                    assistantsList, assistantsPassesList, assistantsMinutesList)), [-1, 13])
 
-	values_list = np.reshape(np.dstack((clubs_list, matches_list, victories_list, draws_list, defeats_list, goals_list,
-	                                    pts_list, scorers_list, scorer_goals_list, scorer_goals_pen_list,
-	                                    assistants_list, assistants_passes_list, assistants_minutes_list)), [-1, 13])
-
-	data = dict(zip(keys_list, values_list))
+	data = dict(zip(keysList, valuesList))
 
 	data.update({
 	    'posts': posts
@@ -211,52 +203,51 @@ def rpl_21(request):
 
 
 	# фильтр команд
-	clubs_list = []
+	clubsList = []
 	for club in clubs:
-	    clubs_list.append(club.text[1:][:-1])
-	clubs_list = clubs_list[1:]
+	    clubsList.append(club.text[1:][:-1])
+	clubsList = clubsList[1:]
 
 	# фильтр количества матчей
-	dirty_list = []
+	dirtyList = []
 	for match in matches:
-	    dirty_list.append(match.text[1:][:-1])
-	matches_list = dirty_list[::5]
+	    dirtyList.append(match.text[1:][:-1])
+	matchesList = dirtyList[::5]
 
 	# фильтр побед
-	dirty_list = []
+	dirtyList = []
 	for victory in victories:
-	    dirty_list.append(victory.text[1:][:-1])
-	victories_list = dirty_list[1::5]
+	    dirtyList.append(victory.text[1:][:-1])
+	victoriesList = dirtyList[1::5]
 
 	# фильтр ничьих
-	dirty_list = []
+	dirtyList = []
 	for draw in draws:
-	    dirty_list.append(draw.text[1:][:-1])
-	draws_list = dirty_list[2::5]
+	    dirtyList.append(draw.text[1:][:-1])
+	drawsList = dirtyList[2::5]
 
 	# фильтр поражений
-	dirty_list = []
+	dirtyList = []
 	for defeat in defeats:
-	    dirty_list.append(defeat.text[1:][:-1])
-	defeats_list = dirty_list[3::5]
+	    dirtyList.append(defeat.text[1:][:-1])
+	defeatsList = dirtyList[3::5]
 
 	# фильтр голов
-	goals_list = []
+	goalsList = []
 	for goal in goals:
-	    goals_list.append(goal.text[2:-2])
+	    goalsList.append(goal.text[2:-2])
 
 	# фильтр очков
-	pts_list = []
+	ptsList = []
 	for pt in pts:
-	    pts_list.append(pt.text)
+	    ptsList.append(pt.text)
 
-	keys_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']
+	keysList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']
 
-	values_list = np.reshape(np.dstack((clubs_list, matches_list, victories_list, draws_list, defeats_list, 
-										goals_list, pts_list)), [-1, 7])
+	valuesList = np.reshape(np.dstack((clubsList, matchesList, victoriesList, drawsList, defeatsList, 
+										goalsList, ptsList)), [-1, 7])
 
-	data = dict(zip(keys_list, values_list))
-
+	data = dict(zip(keysList, valuesList))
 
 	return render(request, 'rpl_21.html', {'data': data})
 
@@ -266,44 +257,47 @@ def scorers(request):
 
 	r = requests.get(url)
 
+	# нахожу бомбардиров и фильтрую
 	scorer = BeautifulSoup(r.text, 'html.parser')
 	scorers = scorer.find_all('a')
 
-	scorers_list = []
+	scorersList = []
 	for scorer in scorers:
-	    scorers_list.append(scorer.text)
-	scorers_list = scorers_list[157:177:2]
+	    scorersList.append(scorer.text)
+	scorersList = scorersList[157:177:2]
 
-
+	# кол-во голов и фильтрую
 	goal = BeautifulSoup(r.text, 'html.parser')
 	goals = goal.find_all('b')
 
-	goals_list = []
+	goalsList = []
 	for goal in goals:
-	    goals_list.append(goal.text)
-	goals_list = goals_list[-20:-10:]
+	    goalsList.append(goal.text)
+	goalsList = goalsList[-20:-10:]
 
+	# кол-во голов с пенальти и фильтрую
 	pen = BeautifulSoup(r.text, 'html.parser')
 	pens = pen.find_all('p')
 
-	pens_list = []
+	pensList = []
 	for pen in pens:
-	    pens_list.append(pen.text)
-	pens_list = pens_list[21::9][:10]
+	    pensList.append(pen.text)
+	pensList = pensList[21::9][:10]
 
+	# сыгранные матчи и фильтрую
 	match = BeautifulSoup(r.text, 'html.parser')
 	matches = match.find_all('p')
 
-	matches_list = []
+	matchesList = []
 	for match in matches:
-	    matches_list.append(match.text)
-	matches_list = matches_list[22::9][:10]
+	    matchesList.append(match.text)
+	matchesList = matchesList[22::9][:10]
 
+	keysList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
-	keys_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+	valuesList = np.reshape(np.dstack((scorersList, goalsList, pensList, matchesList)), [-1, 4])
 
-	values_list = np.reshape(np.dstack((scorers_list, goals_list, pens_list, matches_list)), [-1, 4])
-	data = dict(zip(keys_list, values_list))
+	data = dict(zip(keysList, valuesList))
 
 	return render(request, 'scorers.html', {'data': data})
 
@@ -313,59 +307,65 @@ def assistants(request):
 
 	r = requests.get(url)
 
+	# нахожу ассистентов и фильтрую
 	assistant = BeautifulSoup(r.text, 'lxml')
 	assistants = assistant.find_all('p', class_='name')
 
-	assistants_list = []
+	assistantsList = []
 	for assistant in assistants:
-	    assistants_list.append(assistant.text)
-	assistants_list = assistants_list[:10]
+	    assistantsList.append(assistant.text)
+	assistantsList = assistantsList[:10]
 
-
+	# кол-во ассистов и фильтрую
 	assist = BeautifulSoup(r.text, 'lxml')
 	assists = assist.find_all('p', class_='score')
 
-	assists_list = []
+	assistsList = []
 	for assist in assists:
-	    assists_list.append(assist.text)
-	assists_list = assists_list[:10]
+	    assistsList.append(assist.text)
+	assistsList = assistsList[:10]
 
-
+	# сыгранные минуты и фильтрую
 	minute = BeautifulSoup(r.text, 'lxml')
 	minutes = minute.find_all('p', class_='time')
 
-	minutes_list = []
+	minutesList = []
 	for minute in minutes:
-	    minutes_list.append(minute.text)
-	minutes_list = minutes_list[:10]
+	    minutesList.append(minute.text)
+	minutesList = minutesList[:10]
 
-	keys_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+	keysList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
-	values_list = np.reshape(np.dstack((assistants_list, assists_list, minutes_list)), [-1, 3])
-	data = dict(zip(keys_list, values_list))
+	valuesList = np.reshape(np.dstack((assistantsList, assistsList, minutesList)), [-1, 3])
 
+	data = dict(zip(keysList, valuesList))
 
 	return render(request, 'assistants.html', {'data': data})
 
 
-def myclub(request, club_slug):
+def chooseClub(request):
 
-	club_page = get_object_or_404(Club, club_slug=club_slug)
-	posts = Post.objects.filter(post_club=club_page)
+	return render(request, 'choose_club.html')
 
-	return render(request, 'posts_for_club.html', {'posts': posts, 'club_page': club_page})
+def myClub(request, club_slug):
 
-def full_post(request, post_slug):
+	clubPage = get_object_or_404(Club, club_slug=club_slug)
+	posts = Post.objects.filter(post_club=clubPage)
+
+	return render(request, 'posts_for_club.html', {'posts': posts, 'clubPage': clubPage})
+
+
+def fullPost(request, post_slug):
 
 	post = get_object_or_404(Post, post_slug=post_slug)
-	comments=Comment.objects.filter(post=post).order_by("-timestamp")
-	post_club = post.post_club
-	posts_this_club = Post.objects.filter(post_club=post_club)
+	comments = Comment.objects.filter(post=post).order_by("-timestamp")
+	postClub = post.post_club
+	postsThisClub = Post.objects.filter(post_club=postClub)
 
-	posts_to_show = []
-	for post_this_club in posts_this_club:
-		if post.post_title != post_this_club.post_title:
-			posts_to_show.append(post_this_club)
+	postsToShow = []
+	for postThisClub in postsThisClub:
+		if post.post_title != postThisClub.post_title:
+			postsToShow.append(postThisClub)
 
 	if request.method == 'POST':
 	    form = CommentForm(request.POST)
@@ -380,19 +380,19 @@ def full_post(request, post_slug):
 
 	post = Post.objects.get(post_slug=post_slug)
 
-	num_of_comments = Comment.objects.filter(post = post).count()
+	numOfComments = Comment.objects.filter(post = post).count()
 
-	context={
+	context = {
 	'comments': comments,
     'form': form,
     'post': post,
-    'num_of_comments': num_of_comments,
-    'posts_to_show': posts_to_show
+    'numOfComments': numOfComments,
+    'postsToShow': postsToShow
     }
 
 	return render(request, 'post.html', context)
 
-def delete_comment(request, pk):
+def deleteComment(request, pk):
 	comment = get_object_or_404(Comment, id=pk)
 	post = comment.post
 
@@ -400,35 +400,18 @@ def delete_comment(request, pk):
 
 	return redirect(reverse('post', args=[post.post_slug]))
 
-def create_post(request):
-	error = ''
-	if request.method == 'POST':
-		form = UserPostForm(request.POST)
-		if form.is_valid():
-			userpost_title = request.POST.get('userpost_title')
-			userpost_content = request.POST.get('userpost_content')
-			userpost_image = request.POST.get('userpost_image')
-			userpost = UserPost.objects.create(userpost_title = userpost_title, userpost_content = userpost_content,
-				userpost_image =userpost_image)
-			userpost.timestamp = datetime.datetime.now()
-			return redirect('home')
-		else:
-			messages.error(request,'Имя пользователя или пароль неверны')
-	else:
-		form = UserPostForm()
-
-	return render(request, 'userpost.html', {'form': form, 'error': error})
-
 
 def registrationView(request):
+
 	if request.method == 'POST':
 		form = RegistrationForm(request.POST)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
-			signup_user = User.objects.get(username=username)
-			user_group = Group.objects.get(name='User')
-			user_group.user_set.add(signup_user)
+			signupUser = User.objects.get(username=username)
+			userGroup = Group.objects.get(name='User')
+			userGroup.user_set.add(signupUser)
+			return redirect('login')
 	else:
 		form = RegistrationForm()
 
@@ -436,6 +419,7 @@ def registrationView(request):
 
 
 def loginView(request):
+
 	if request.method == 'POST':
 		form = AuthenticationForm(data=request.POST)
 		if form.is_valid():
@@ -455,9 +439,8 @@ def loginView(request):
 
 
 def logoutView(request):
+
 	logout(request)
+	
 	return redirect('home')
 
-def accountView(request):
-
-	return render(request, 'account.html')

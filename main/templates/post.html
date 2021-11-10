@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div style="background: floralwhite;">
+<div class="mb-5">
 	<div class="container">
 		<div class="row g-5">
 		    <div class="col-md-8">
@@ -15,44 +15,44 @@
 			        <p class="blog-post-meta">{{post.post_published}}</p>
 			        <img src="{{post.post_image.url}}" width="350" height="250" class="mt-3">
 			        <p style = "white-space:pre-line" class="mt-5">{{post.post_text}}</p>
-			        <hr>
+			        <hr class="hr__line">
 			        <p>Автор статьи: {{post.post_creator}}</p>
 			        <p># {{post.post_club}}</p>
 			    </article>
 			<div>
 		    	<p class="title mt-3">Может быть интересно: </p>
 		    	<ul>
-				    {% for post in posts_to_show %}
+				    {% for post in postsToShow %}
 			        	<li class="mt-3"><a href="{% url 'post' post.post_slug %}" style="text-decoration: true; color: black">{{post.post_title}}</a></li>
 			        {% endfor %}
 			    </ul>
 		    </div>
 			</div>
-			<div style="background: floralwhite;" class="col-md-4">
+			<div class="col-md-4">
 				<div class="mt-3" style="top: 2rem;">
-			        <div class="p-4 mb-3 bg-light rounded">
-			        	{% if num_of_comments == 0 %}
+			        <div class="p-4 mb-3 rounded comment__space">
+			        	{% if numOfComments == 0 %}
 			        		<h4 class="fst-italic">Оставьте первый комментарий!</h4>
 			        	{% else %}
-				        	<h4 class="fst-italic">Комментариев: {{num_of_comments}}</h4>
+				        	<h4 class="fst-italic">Комментариев: {{numOfComments}}</h4>
 			        	{% endif %}
 			        	{% if request.user.is_authenticated %}
 					        <form name="comment" method="POST">
 							    {% csrf_token %}
-							    <textarea name="content" required_id="id_content" placeholder="Ваш комментарий" rows="5" cols="30"></textarea>
-							    <input type="submit" name="comment" value="Оставить комментарий" class="btn btn-outline-dark">
+							    <textarea name="content" required_id="id_content" placeholder="Ваш комментарий" rows="5" cols="30" class="comment__textarea"></textarea>
+							    <input id="postComment" type="submit" name="comment" value="Оставить комментарий" class="btn main__button">
 							</form>
 						{% else %}
 							<p>Оставлять комментарии могут только зарегистрированные пользователи. <a href="{% url 'registration' %}" style="text-decoration: none;">Зарегистрироваться</a>
 						{% endif %}
-						<hr>
+						<hr class="hr__line">
 				        {% for comment in comments %}
-				          	<p class="mb-0 mt-2">{{comment.user}} | {{ comment.timestamp | date:"Y-m-d H:m" }}</p>
-				          	<p style="color: darkgreen;">{{comment.content}}</p>
-				          	{% if user.is_authenticated and comment.user == user %}
-							   	<a href="{% url 'delete_comment' comment.id %}"><i class="cart-icon material-icons btn-dark">clear</i></a>
+				          	<p class="mb-0 mt-2 fst-italic">{{comment.user}} | {{ comment.timestamp | date:"Y-m-d H:m" }}</p>
+				          	<p style="color: black;">{{comment.content}}</p>
+				          	{% if user.is_authenticated and comment.user == user or request.user.is_staff %}
+							   	<a href="{% url 'deleteComment' comment.id %}"><i class="cart-icon material-icons btn-dark">clear</i></a>
 							{% endif %}
-							<hr>
+							<hr class="hr__line">
 				        {% endfor %}
 			        </div>
 			    </div>

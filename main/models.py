@@ -9,7 +9,14 @@ class Club(models.Model):
     club_slug = models.SlugField(max_length=250, unique=True)
 
     def get_url(self):
-        return reverse('myclub', args=[self.club_slug])
+        return reverse('myClub', args=[self.club_slug])
+
+    def getShortName(self):
+
+        if len(self.club_name.split()) <= 2:
+            return (self.club_name)
+        else:
+            return " ".join(self.club_name.split()[1:])
 
     def __str__(self):
         return self.club_name
@@ -43,13 +50,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
-
-class UserPost(models.Model):
-    userpost_user = models.ForeignKey(User,on_delete=models.CASCADE)
-    userpost_timestamp = datetime.datetime.now()
-    userpost_title = models.TextField(max_length=127)
-    userpost_content = models.TextField(max_length=4095)
-    userpost_image = models.ImageField(upload_to="userposts_photo")
-
-    def __str__(self):
-        return self.userpost_title

@@ -21,8 +21,6 @@
 				<h1 class="">Регистрация</h1>
 				<input type="text" name="username" maxlength="100" required id="id_username" class="txtb mb-3" placeholder="Придумайте никнейм">
 				{{form.errors.username}}
-				<input type="text" name="first_name" maxlength="100" required id="id_first_name" class="txtb mb-3" placeholder="Ваше имя">
-				<input type="text" name="last_name" maxlength="100" required id="id_last_name" class="txtb mb-3" placeholder="Ваша фамилия">
 				<input type="text" name="email" maxlength="100" required id="id_email" placeholder="Ваша электронная почта">
 				{{form.errors.email}}
 				<input type="password" name="password1" maxlength="100" required id="id_password1" class="txtb mb-3" placeholder="Придумайте пароль">
@@ -32,8 +30,6 @@
 				<a href="{% url 'login' %}">Уже есть аккаунт?</a>
 			</form>
 		</div>
-	{% else %}
-		<a href="{% url 'login' %}" class="title text-center">Отлично! Осталось только войти в аккаунт</a>
 	{% endif %}
 </div>
 </body>
