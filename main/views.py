@@ -347,17 +347,17 @@ def chooseClub(request):
 
 	return render(request, 'choose_club.html')
 
-def myClub(request, club_slug):
+def myClub(request, clubSlug):
 
-	clubPage = get_object_or_404(Club, club_slug=club_slug)
+	clubPage = get_object_or_404(Club, club_slug=clubSlug)
 	posts = Post.objects.filter(post_club=clubPage)
 
 	return render(request, 'posts_for_club.html', {'posts': posts, 'clubPage': clubPage})
 
 
-def fullPost(request, post_slug):
+def fullPost(request, postSlug):
 
-	post = get_object_or_404(Post, post_slug=post_slug)
+	post = get_object_or_404(Post, post_slug=postSlug)
 	comments = Comment.objects.filter(post=post).order_by("-timestamp")
 	postClub = post.post_club
 	postsThisClub = Post.objects.filter(post_club=postClub)
@@ -378,7 +378,7 @@ def fullPost(request, post_slug):
 	else:
 	    form = CommentForm()
 
-	post = Post.objects.get(post_slug=post_slug)
+	post = Post.objects.get(post_slug=postSlug)
 
 	numOfComments = Comment.objects.filter(post = post).count()
 

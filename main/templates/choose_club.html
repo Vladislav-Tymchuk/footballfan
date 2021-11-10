@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %} Выбери свой клуб! {% endblock %}
+{% block title %} Выбери клуб! {% endblock %}
 
 {% block content %}
 
 <div class="mt-3 mb-3">
     {% if request.user.is_authenticated %}
     <h3 class="text-center ms-auto"><span class="my__username" >{{request.user.username}}</span>, 
-        на этой странице можно перейти к своему <span style="color: #EE9A49;">клубу</span>, новости которого Вы можете отследить</h3>
+        на этой странице можно перейти ко <span class="choosed__club">клубу</span>, новости которого Вы можете отследить</h3>
     {% else %}
-    <h3 class="text-center ms-auto">На этой странице можно перейти к своему <span style="color: #EE9A49;">клубу</span>, новости которого Вы можете отследить</h3>
+    <h3 class="text-center ms-auto">На этой странице можно перейти ко <span class="choosed__club">клубу</span>, новости которого Вы можете отследить</h3>
     {% endif %}
 </div>
 
@@ -26,9 +26,9 @@
     <div class="mt-3 mb-3">
         <p>Что дает данная фукнция?</p>
         <ul class="mt-3 mb-3">
-            <li class="mb-2">Если у Вас есть <span style="color: #EE9A49;">любимый клуб</span> - выбирайте его в списке выше, тогда будете перенаправлены на страницу с постами по тематике этого клуба</li>
-            <li class="mb-2" style="color: #EE9A49;"><p class="text-dark">Интересно, что происходит в какой-то команде? Жми на нее, тогда увидешь, <span style="color: #EE9A49;;">что происходит</span> в стане заклятого врага или следующего соперника</p></li>
-            <li class="mb-2"><p>Выбранный клуб<span style="color: #EE9A49;"> можно менять</span> сколько угодно раз на этой странице</p></li>
+            <li class="mb-2" style="color: #EE9A49;"><p class="text-dark">Если у Вас есть <span class="choosed__club">любимый клуб</span> - выбирайте его в списке выше, тогда будете перенаправлены на страницу с постами по тематике этого клуба</p></li>
+            <li class="mb-2" style="color: #EE9A49;"><p class="text-dark">Интересно, что происходит в какой-то команде? Жми на нее, тогда увидешь, <span class="choosed__club">что происходит</span> в стане заклятого врага или следующего соперника</p></li>
+            <li class="mb-2" style="color: #EE9A49;"><p class="text-dark">Выбранный клуб<span class="choosed__club"> можно менять</span> сколько угодно раз на этой странице</p></li>
         </ul>
     </div>
 </div>

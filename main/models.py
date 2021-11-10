@@ -32,7 +32,7 @@ class Post(models.Model):
     post_date = models.DateTimeField()
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.post_slug})
+        return reverse('post', kwargs={'postSlug': self.post_slug})
 
     class Meta:
         ordering = ['-post_date']
